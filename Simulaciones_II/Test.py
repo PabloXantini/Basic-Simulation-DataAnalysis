@@ -190,9 +190,9 @@ class ChiTest:
     def fuseClass(self, CurrClass:str, Class:str, Mode:str):
         newClassName=None
         if Mode=="quantity":
-            newClassName=str(CurrClass)+','+(Class)
+            newClassName=str(CurrClass)+','+str(Class)
         elif Mode=="discrete" or Mode=="continous":
-            newClassName=str(CurrClass)+'-'+(Class)
+            newClassName=str(CurrClass)+'-'+str(Class)
         self.DataFrame=self.mergesumClass(CurrClass, Class, newClassName)
         return self.DataFrame
     def mergesumClass(self, CurrClass:str, Class:str, newClassName: str):
@@ -346,7 +346,7 @@ class KolmogorovSmirnovTest:
         elif distribution=="exponential":
             Exp=[]
             for MClass in MClasses:
-                SubMClasses=MClass.split(',')
+                SubMClasses=str(MClass).split(',')
                 expsum=0.0
                 for SubMClass in SubMClasses:
                     exp=truncate(xp.getinPDensity(float(SubMClass)),Trunc)
